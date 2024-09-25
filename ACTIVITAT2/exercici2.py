@@ -1,4 +1,4 @@
-valorUsuari = int(input("Introdueix un valor en € "))
+valorUsuari = float(input("Introdueix un valor en € "))
 ivaUsuari = int(input("Introdueix el IVA que vols aplicar (4%, 10%, 21%) "))
 
 while(ivaUsuari != 4 and ivaUsuari != 10 and ivaUsuari != 21):
