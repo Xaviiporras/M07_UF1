@@ -1,13 +1,16 @@
-import psycopg2 as pg
+import psycopg2
 
-conn = pg.connect(
-    database="postgres",
-    user='user_postgres',
-    password='pass_postgres',
-    host='localhost',
-    port='5432'
-)
-
-connection = conn.cursor()
-
-print(connection)
+def get_connection():
+    try:
+        connection = psycopg2.connect(
+            database="postgres",
+            user='user_postgres',
+            password='pass_postgres',
+            host='localhost',
+            port='5432'
+        )
+        return connection
+    except Exception as e:
+        print(f"No se ha podido establecer la conexión: {e}")
+    finally:
+        connection.close()
