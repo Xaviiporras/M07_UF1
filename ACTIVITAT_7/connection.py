@@ -10,8 +10,6 @@ def get_connection():
             port='5432'
         )
         connection = conn.cursor()
-        return connection
+        return conn
     except Exception as e:
         print(f"No se ha podido establecer la conexión: {e}")
-    finally:
-        connection.close()
