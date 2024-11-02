@@ -7,7 +7,7 @@ def create_table():
     if connection:
         try:
             cursor = connection.cursor()
-            query = f"""CREATE TABLE COCHES(
+            sql = f"""CREATE TABLE COCHES(
                 bastidor SERIAL PRIMARY KEY,
                 matricula VARCHAR(20),
                 marca VARCHAR(20),
@@ -16,7 +16,7 @@ def create_table():
                 combustible VARCHAR(20)
             )"""
             
-            cursor.execute(query)
+            cursor.execute(sql)
             connection.commit()
         except Exception as e:
             print(f"Error al crear la tabla: {e}")
