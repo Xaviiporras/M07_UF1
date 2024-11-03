@@ -1,11 +1,14 @@
 import connection as conn
 
 def update(bastidor, matricula=None, marca=None, color=None, nombre_propietario=None, combustible=None):
+    #Creo la conexión
     connect = conn.get_connection()
     if connect:
         try:
             cursor = connect.cursor()
+            # Almacena las columnas a actualizar
             updates = []
+            # Almacena los valores correspondientes
             values = []
             
             if matricula:
@@ -26,12 +29,15 @@ def update(bastidor, matricula=None, marca=None, color=None, nombre_propietario=
                 
                 
             if updates:
+                #Creo la consulta introduciendole los updates con comas entre ellos
                 sql = f"UPDATE COCHES SET {', '.join(updates)} WHERE bastidor = %s"
                 values.append(bastidor)
+                #Ejecuto la consulta y guardo los cambios
                 cursor.execute(sql, values)
                 connect.commit()
         except Exception as e:
             raise e
         finally:
+            #Cierro la conexión
             cursor.close()
             connect.close()
