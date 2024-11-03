@@ -1,9 +1,11 @@
+import create_table
 import create
 import delete
 import read
 import update
 
 def main():
+    create_table.create_table()
     #Variable que detendra el bucle
     bool_main = True
     
